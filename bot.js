@@ -86,7 +86,7 @@ var ftnGif = function (channelID){
 
             var gif = xhttp.responseText; 
             var obj = JSON.parse(gif);
-            var random = Math.floor(Math.random() * 10 - 0 + 0);
+            var random = Math.floor(Math.random() * 10);
             logger.info(obj);
             
             var msg = obj.data.image_url;
