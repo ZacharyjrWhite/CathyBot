@@ -4,10 +4,10 @@
 
 ##### Commands
 ```
->!pun
+> !pun
 Posts a pun in the discord server.
 
->!gif
+> !gif
 Posts a gif in the discord server.
 ```
 
