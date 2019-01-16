@@ -13,7 +13,10 @@
 !gif
 ```
 > Posts a gif in the discord server.
-
+```
+!disconnect
+```
+> Makes the bot disconnect from the server. (Logs off)
 
 
 ### Version 1.0
