@@ -2,7 +2,9 @@
 
 > This is a discord bot used to post silly puns in a discord server, as well as gifs. The bot is built using Node js.
 
-###### Commands
+
+
+### Commands
 ```
 !pun
 ```
@@ -12,10 +14,23 @@
 ```
 > Posts a gif in the discord server.
 
+
+
 ### Version 1.0
+
+
+
+### Future Release ideas 
+```
+Add future commands
+```
+
+
 
 ### Contributions
 - Zachary White
+
+
 
 ### Date
 January 16, 2018
