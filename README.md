@@ -21,17 +21,17 @@
 
 
 ### Future Release ideas 
-```
-Add future commands
-```
+
+> Add future commands
+
 
 
 
 ### Contributions
-- Zachary White
+> Zachary White
 
 
 
 ### Date
-January 16, 2018
+> January 16, 2018
 
