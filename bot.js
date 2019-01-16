@@ -2,6 +2,7 @@ var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var whitelist = require("./whitelist.json").users;
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
@@ -25,32 +26,43 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
     var disconnect = {
         "message" : "Bot Disconnected",
-        "level" : "info"
+        "level" : "info", 
+        "channel" : channelID,
+        "user" : userID
     }
 
-    if (message.substring(0, 1) == '!') {
-        var args = message.substring(1).split(' ');
-        var cmd = args[0];
-       
-        args = args.splice(1);
-        switch(cmd) {
-            // !ping
-            case 'pun':
-                ftnPun(channelID);
+    var users = whitelist;
+
+    for(var i = 0; i < users.length; i++){
+            if(userID == users[i].userid){
+                if (message.substring(0, 1) == '!') {
+                    var args = message.substring(1).split(' ');
+                    var cmd = args[0];
+                   
+                    args = args.splice(1);
+                    switch(cmd) {
+                        // !ping
+                        case 'pun':
+                        //logger.info(disconnect);
+                            ftnPun(channelID);
+                        break;
+                        case 'gif':
+                        //logger.info(disconnect);
+                            ftnGif(channelID);
+                        break;
+                        case 'disconnect':
+                            logger.info(disconnect);
+                            bot.disconnect();
+                        break;
+                        // Just add any case commands if you want to..
+                     }
+            }
             break;
-            case 'gif':
-                ftnGif(channelID);
-            break;
-            case 'disconnect':
-                logger.info(disconnect);
-                bot.disconnect();
-            break;
-            // Just add any case commands if you want to..
-         }
-     }
+        }
+    }    
 });
 
-var ftnPun = function (channelID){
+var ftnPun = function (channelID, userID){
     var url = "https://getpuns.herokuapp.com/api/random";
     var method = "GET";
     var xhttp = new XMLHttpRequest();
