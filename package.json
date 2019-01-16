@@ -1,0 +1,13 @@
+{
+    "name": "Cathy Bot",
+    "version": "1.0.0",
+    "description": "Cathy Bot - Puns and Gifs",
+    "main": "bot.js",
+    "author": "Zachary White",
+    "dependencies": {
+        "discord": "^0.8.2",
+        "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+        "winston": "^3.1.0",
+        "xmlhttprequest": "^1.8.0"
+    }
+}
