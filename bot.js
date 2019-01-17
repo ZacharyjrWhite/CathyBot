@@ -3,13 +3,15 @@ var logger = require('winston');
 var auth = require('./auth.json');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var whitelist = require("./whitelist.json").users;
-// Configure logger settings
+var active = true;
+
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
     colorize: true
 });
+
 logger.level = 'debug';
-// Initialize Discord Bot
+
 var bot = new Discord.Client({
    token: auth.token,
    autorun: true
@@ -21,8 +23,6 @@ bot.on('ready', function (evt) {
 });
 
 bot.on('message', function (user, userID, channelID, message, evt) {
-    // Our bot needs to know if it will execute a command
-    // It will listen for messages that will start with `!`
 
     var disconnect = {
         "message" : "Bot Disconnected",
@@ -44,15 +44,22 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                         // !ping
                         case 'pun':
                         //logger.info(disconnect);
-                            ftnPun(channelID);
+                        if(active){
+                            ftnPun(channelID); 
+                        }
                         break;
                         case 'gif':
                         //logger.info(disconnect);
+                        if(active){
                             ftnGif(channelID);
+                        }                            
                         break;
                         case 'disconnect':
                             logger.info(disconnect);
-                            bot.disconnect();
+                            active = false;
+                        break;
+                        case 'connect':
+                            active = true;
                         break;
                         // Just add any case commands if you want to..
                      }
@@ -121,8 +128,6 @@ var ftnGif = function (channelID){
             });
         }
     }
-    
     xhttp.open(method, url, true); 
-  
     xhttp.send(); 
 };
