@@ -16,7 +16,11 @@
 ```
 !disconnect
 ```
-> Makes the bot disconnect from the server. (Logs off)
+> Makes the bot inactive.
+```
+!connect
+```
+> Makes the bot active.
 
 
 ### Version 1.0
